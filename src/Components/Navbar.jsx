@@ -32,7 +32,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className='px-12 h-16 flex items-center justify-between border-b border-b-[#C4A8C8]'>
+    <nav className='px-16 h-16 flex items-center justify-between border-b border-b-[#C4A8C8]'>
       {/* Logo */}
       <Logo />
 
@@ -45,7 +45,7 @@ export default function Navbar() {
             font-[Raleway] text-sm font-medium cursor-pointer transition
             ${
               active === item
-                ? 'text-[#2B2B2B] underline decoration-2 decoration-[#7B5EA7] underline-offset-6'
+                ? 'text-[#1C1C1C] underline decoration-2 decoration-[#7B5EA7] underline-offset-6'
                 : 'text-[#6b5878] hover:text-[#C4A8C8]'
             }
           `}

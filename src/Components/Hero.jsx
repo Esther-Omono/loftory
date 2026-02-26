@@ -39,12 +39,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className='relative flex items-center justify-between bg-[#F5F2FA] py-10 pl-16 pr-0 overflow-hidden'>
+    <section className='relative flex items-center justify-between bg-[#F5F2FA] py-10 pl-16 overflow-hidden'>
       {/* Left Section */}
       <div className='w-[55%]'>
         <div className='inline-flex items-center gap-2 bg-white border border-[#C4A8C8] py-2 px-3 rounded-4xl font-[Raleway]'>
           <div className='bg-[#7B5EA7] p-2 rounded-full'>
-            <LuArmchair size={17} fill='#F0EBE3' stroke='#F0EBE3' />
+            <LuArmchair size={17} fill='#F5F2FA' stroke='#F5F2FA' />
           </div>
           <p className='text-sm'>The Best Online Furniture Store</p>
         </div>
@@ -97,12 +97,12 @@ export default function Hero() {
                   </div>
 
                   {/* Bottom content */}
-                  <div className='flex justify-between items-center px-6 gap-4 py-5 bg-white'>
+                  <div className='flex justify-between items-center px-6 gap-4 py-5 bg-white font-[Raleway]'>
                     <div>
-                      <h3 className='font-[Cormorant-Garamond] text-2xl font-semibold'>
+                      <h3 className=' text-2xl font-semibold text[#1C1C1C]'>
                         {product.title}
                       </h3>
-                      <p className='text-sm font-[Raleway] text-gray-500 mt-1'>
+                      <p className='text-sm text-[#9B88A8] mt-1'>
                         {product.items}
                       </p>
                     </div>
@@ -125,7 +125,7 @@ export default function Hero() {
                   prev === 0 ? products.length - 1 : prev - 1,
                 )
               }
-              className='w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition'
+              className='w-9 h-9 flex items-center justify-center rounded-full bg-[#F5F2FA] shadow-md hover:scale-105 transition'
             >
               ←
             </button>
