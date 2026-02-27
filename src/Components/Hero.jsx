@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { LuArmchair } from 'react-icons/lu';
 
@@ -27,16 +27,45 @@ const products = [
 ];
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
+  const [transitionEnabled, setTransitionEnabled] = useState(true);
+
+  const extendedProducts = useMemo(() => {
+    return [products[products.length - 1], ...products, products[0]];
+  }, []);
 
   // Auto play
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % products.length);
+      setIndex((prev) => prev + 1);
     }, 3500);
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (index === products.length + 1) {
+      const timer = setTimeout(() => {
+        setTransitionEnabled(false);
+        setIndex(1);
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+
+    if (index === 0) {
+      const timer = setTimeout(() => {
+        setTransitionEnabled(false);
+        setIndex(products.length);
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+
+    const enableTimer = setTimeout(() => {
+      setTransitionEnabled(true);
+    }, 750);
+
+    return () => clearTimeout(enableTimer);
+  }, [index]);
 
   return (
     <section className='relative flex items-center justify-between bg-pearl-violet py-10 pl-16 overflow-hidden'>
@@ -70,15 +99,19 @@ export default function Hero() {
           {/* Cards Row */}
           <div className='overflow-hidden'>
             <div
-              className='flex gap-8 transition-transform duration-700 ease-in-out'
+              className={`flex gap-8 ${
+                transitionEnabled
+                  ? 'transition-transform duration-700 ease-in-out'
+                  : ''
+              }`}
               style={{
-                transform: `translate(-${index * 320}px)`,
+                transform: `translateX(-${index * 352}px)`,
               }}
             >
-              {products.map((product) => (
+              {extendedProducts.map((product) => (
                 <div
                   key={product.id}
-                  className='flex-none rounded-3xl overflow-hidden border border-lavender-mist'
+                  className='flex-none w-80 rounded-3xl overflow-hidden border border-lavender-mist'
                 >
                   {/* Image */}
                   <div className='h-50 relative'>
@@ -121,11 +154,7 @@ export default function Hero() {
           <div className='flex gap-3 items-center mt-6 pl-1'>
             {/* Prev */}
             <button
-              onClick={() =>
-                setIndex((prev) =>
-                  prev === 0 ? products.length - 1 : prev - 1,
-                )
-              }
+              onClick={() => setIndex((prev) => prev - 1)}
               className='w-9 h-9 flex items-center justify-center rounded-full bg-pearl-violet shadow-md hover:scale-105 transition'
             >
               ←
@@ -133,7 +162,7 @@ export default function Hero() {
 
             {/* Next */}
             <button
-              onClick={() => setIndex((prev) => (prev + 1) % products.length)}
+              onClick={() => setIndex((prev) => prev + 1)}
               className='w-9 h-9 flex items-center justify-center rounded-full bg-smoked-violet text-white shadow-md hover:scale-105 transition'
             >
               →
@@ -144,10 +173,10 @@ export default function Hero() {
               {products.map((_, i) => (
                 <div
                   key={i}
-                  onClick={() => setIndex(i)}
+                  onClick={() => setIndex(i + 1)}
                   className={`
             h-1.5 rounded-full transition-all duration-300 cursor-pointer
-            ${i === index ? 'w-6 bg-smoked-violet' : 'w-1.5 bg-gray-300'}
+            ${i + 1 === index ? 'w-6 bg-smoked-violet' : 'w-1.5 bg-gray-300'}
           `}
                 />
               ))}
