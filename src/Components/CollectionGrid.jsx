@@ -16,7 +16,6 @@ export const CollectionGrid = () => {
         'Club Chair',
       ],
       image: chairImg,
-      accentColor: '#D36B4C',
     },
     {
       count: '750+',
@@ -28,7 +27,6 @@ export const CollectionGrid = () => {
         'Curved Sofa',
       ],
       image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7',
-      accentColor: '#D36B4C',
     },
     {
       count: '450+',
@@ -40,7 +38,6 @@ export const CollectionGrid = () => {
         'Plastic Stools',
       ],
       image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
-      accentColor: '#D36B4C',
     },
   ];
 

@@ -39,26 +39,27 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className='relative flex items-center justify-between bg-[#F5F2FA] py-10 pl-16 overflow-hidden'>
+    <section className='relative flex items-center justify-between bg-pearl-violet py-10 pl-16 overflow-hidden'>
       {/* Left Section */}
       <div className='w-[55%]'>
-        <div className='inline-flex items-center gap-2 bg-white border border-[#C4A8C8] py-2 px-3 rounded-4xl font-[Raleway]'>
-          <div className='bg-[#7B5EA7] p-2 rounded-full'>
+        <div className='inline-flex items-center gap-2 bg-white border border-dusty-mauve py-2 px-3 rounded-4xl font-sans'>
+          <div className='bg-smoked-violet p-2 rounded-full'>
             <LuArmchair size={17} fill='#F5F2FA' stroke='#F5F2FA' />
           </div>
           <p className='text-sm'>The Best Online Furniture Store</p>
         </div>
 
-        <h1 className='text-6xl leading-tight font-medium my-6 font-[Cormorant-Garamond]'>
-          Explore Our <span className='text-[#7B5EA7]'>Modern Furniture</span>{' '}
+        <h1 className='text-6xl leading-tight font-medium my-6 font-serif'>
+          Explore Our{' '}
+          <span className='text-smoked-violet'>Modern Furniture</span>{' '}
           Collection
         </h1>
-        <p className='text-sm font-[Raleway] text-[#9B88A8] max-w-md'>
+        <p className='text-sm font-sans text-faded-iris max-w-md'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ligula
           risus, vestibulum vel tortor ac, suscipit imperdiet erat.
         </p>
 
-        <button className='flex items-center gap-2 mt-8 font-[Raleway] font-medium text-sm bg-[#7B5EA7] px-7 py-3 rounded-xl text-white hover:bg-white hover:text-[#7B5EA7] hover:border hover:border-[#7B5EA7] transition-all'>
+        <button className='flex items-center gap-2 mt-8 font-sans] font-medium text-sm bg-smoked-violet px-7 py-3 rounded-xl text-white hover:bg-white hover:text-smoked-violet hover:border hover:border-smoked-violet transition-all'>
           Shop Now <IoIosArrowRoundForward />
         </button>
       </div>
@@ -77,7 +78,7 @@ export default function Hero() {
               {products.map((product) => (
                 <div
                   key={product.id}
-                  className='flex-none rounded-3xl overflow-hidden border border-[#ede8f5]'
+                  className='flex-none rounded-3xl overflow-hidden border border-lavender-mist'
                 >
                   {/* Image */}
                   <div className='h-50 relative'>
@@ -91,23 +92,23 @@ export default function Hero() {
                     <div className='absolute inset-0 bg-linear-to-t from-black/30 to-transparent' />
 
                     {/* Price badge (first only) */}
-                    <span className='absolute top-5 right-5 bg-[#7B5EA7] text-white font-[Raleway] text-sm px-5 py-1.5 rounded-full shadow-md'>
+                    <span className='absolute top-5 right-5 bg-smoked-violet text-white font-sans text-sm px-5 py-1.5 rounded-full shadow-md'>
                       {product.price}
                     </span>
                   </div>
 
                   {/* Bottom content */}
-                  <div className='flex justify-between items-center px-6 gap-4 py-5 bg-white font-[Raleway]'>
+                  <div className='flex justify-between items-center px-6 gap-4 py-5 bg-white font-sans'>
                     <div>
                       <h3 className=' text-2xl font-semibold text[#1C1C1C]'>
                         {product.title}
                       </h3>
-                      <p className='text-sm text-[#9B88A8] mt-1'>
+                      <p className='text-sm text-faded-iris mt-1'>
                         {product.items}
                       </p>
                     </div>
 
-                    <button className='w-10 h-10 flex items-center justify-center rounded-full bg-[#7B5EA7] text-white shadow-md hover:scale-105 transition'>
+                    <button className='w-10 h-10 flex items-center justify-center rounded-full bg-smoked-violet text-white shadow-md hover:scale-105 transition'>
                       ↗
                     </button>
                   </div>
@@ -125,7 +126,7 @@ export default function Hero() {
                   prev === 0 ? products.length - 1 : prev - 1,
                 )
               }
-              className='w-9 h-9 flex items-center justify-center rounded-full bg-[#F5F2FA] shadow-md hover:scale-105 transition'
+              className='w-9 h-9 flex items-center justify-center rounded-full bg-pearl-violet shadow-md hover:scale-105 transition'
             >
               ←
             </button>
@@ -133,7 +134,7 @@ export default function Hero() {
             {/* Next */}
             <button
               onClick={() => setIndex((prev) => (prev + 1) % products.length)}
-              className='w-9 h-9 flex items-center justify-center rounded-full bg-[#7B5EA7] text-white shadow-md hover:scale-105 transition'
+              className='w-9 h-9 flex items-center justify-center rounded-full bg-smoked-violet text-white shadow-md hover:scale-105 transition'
             >
               →
             </button>
@@ -146,7 +147,7 @@ export default function Hero() {
                   onClick={() => setIndex(i)}
                   className={`
             h-1.5 rounded-full transition-all duration-300 cursor-pointer
-            ${i === index ? 'w-6 bg-[#7B5EA7]' : 'w-1.5 bg-gray-300'}
+            ${i === index ? 'w-6 bg-smoked-violet' : 'w-1.5 bg-gray-300'}
           `}
                 />
               ))}

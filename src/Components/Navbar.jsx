@@ -10,9 +10,9 @@ function NavIcons() {
       {icons.map((Icon, index) => (
         <div
           key={index}
-          className='w-9 h-9 flex items-center justify-center rounded-full transition-all duration-100 cursor-pointer hover:bg-[#ede8f5] hover:border hover:border-[#6b5878]'
+          className='w-9 h-9 flex items-center justify-center rounded-full transition-all duration-100 cursor-pointer hover:bg-lavender-mist hover:border hover:border-dusk-plum'
         >
-          <Icon size={20} className='text-[#6b5878]' />
+          <Icon size={20} className='text-dusk-plum' />
         </div>
       ))}
     </div>
@@ -32,7 +32,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className='px-16 h-16 flex items-center justify-between border-b border-b-[#C4A8C8]'>
+    <nav className='px-16 h-16 flex items-center justify-between border-b border-b-dusty-mauve'>
       {/* Logo */}
       <Logo />
 
@@ -42,11 +42,11 @@ export default function Navbar() {
             key={item}
             onClick={() => setActive(item)}
             className={`
-            font-[Raleway] text-sm font-medium cursor-pointer transition
+            font-sans text-sm font-medium cursor-pointer transition
             ${
               active === item
-                ? 'text-[#1C1C1C] underline decoration-2 decoration-[#7B5EA7] underline-offset-6'
-                : 'text-[#6b5878] hover:text-[#C4A8C8]'
+                ? 'text-near-black underline decoration-2 decoration-smoked-violet underline-offset-6'
+                : 'text-dusk-plum hover:text-dusty-mauve'
             }
           `}
           >
