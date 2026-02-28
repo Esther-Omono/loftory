@@ -38,20 +38,20 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-smoked-violet text-white py-10 px-16 font-sans'>
-      <div className='flex items-center justify-center gap-8'>
+    <footer className='bg-smoked-violet text-white py-10 px-4 sm:px-6 lg:px-16 font-sans'>
+      <div className='flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-16'>
         {/* Left Section */}
-        <div className='basis-1/3'>
+        <div className='flex-1-1/3'>
           <Logo bgColor='bg-white' iconColor='#7B5EA7' textColor='text-white' />
 
-          <p className='py-2'>
+          <p className='py-2 text-sm sm:text-base'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec
             molestie velit. Sed vel sodales lorem. In at mauris vitae velit
             sollicitudin sollicitudin eu et.
           </p>
 
           {/* Social Icons */}
-          <div className='flex gap-4 mt-4'>
+          <div className='flex gap-3 mt-4 flex-wrap'>
             {socialIcons.map((Icon, i) => (
               <div
                 key={i}
@@ -64,15 +64,15 @@ export default function Footer() {
         </div>
 
         {/* Right Section */}
-        <div className='basis-2/3 flex justify-between gap-8'>
+        <div className='flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
           {footerSections.map((section, index) => (
             <div key={index} className='flex-1'>
-              <h3 className='mb-4 text-base font-semibold'>{section.title}</h3>
+              <h3 className='mb-3 text-base font-semibold'>{section.title}</h3>
 
               {section.links.map((link, i) => (
                 <p
                   key={i}
-                  className='py-2 text-sm cursor-pointer hover:text-gray-300 transition-colors'
+                  className='py-1 text-sm cursor-pointer hover:text-gray-300 transition-colors wrap-break-word'
                 >
                   {link}
                 </p>
@@ -83,7 +83,7 @@ export default function Footer() {
       </div>
 
       {/* Styled Divider */}
-      <hr className='my-10 border-t border-white/20 w-3/4 mx-auto' />
+      <hr className='my-8 border-t border-white/20 w-full lg:w-3/4 mx-auto' />
 
       <div className='text-center text-sm opacity-80'>
         <p>Copyright &copy; {currentYear} All rights reserved.</p>

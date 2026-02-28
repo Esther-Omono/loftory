@@ -68,9 +68,9 @@ export default function Hero() {
   }, [index]);
 
   return (
-    <section className='relative flex items-center justify-between bg-pearl-violet py-10 pl-16 overflow-hidden'>
+    <section className='relative flex flex-col lg:flex-row items-center justify-between bg-pearl-violet py-10 pl-8 lg:pl-16 pr-8 lg:pr-0 overflow-hidden'>
       {/* Left Section */}
-      <div className='w-[55%]'>
+      <div className='w-full lg:w-[55%] mb-10 lg:mb-0'>
         <div className='inline-flex items-center gap-2 bg-white border border-dusty-mauve py-2 px-3 rounded-4xl font-sans'>
           <div className='bg-smoked-violet p-2 rounded-full'>
             <LuArmchair size={17} stroke='#F5F2FA' />
@@ -78,7 +78,7 @@ export default function Hero() {
           <p className='text-sm'>The Best Online Furniture Store</p>
         </div>
 
-        <h1 className='text-6xl leading-tight font-medium my-6 font-serif'>
+        <h1 className='text-4xl sm:text-5xl lg:text-6xl leading-tight font-medium my-6 font-serif'>
           Explore Our{' '}
           <span className='text-smoked-violet'>Modern Furniture</span>{' '}
           Collection
@@ -88,14 +88,14 @@ export default function Hero() {
           risus, vestibulum vel tortor ac, suscipit imperdiet erat.
         </p>
 
-        <button className='flex items-center gap-2 mt-8 font-sans] font-medium text-sm bg-smoked-violet px-7 py-3 rounded-xl text-white hover:bg-white hover:text-smoked-violet hover:border hover:border-smoked-violet transition-all'>
+        <button className='flex items-center gap-2 mt-8 font-sans font-medium text-sm bg-smoked-violet px-7 py-3 rounded-xl text-white hover:bg-white hover:text-smoked-violet hover:border hover:border-smoked-violet transition-all'>
           Shop Now <IoIosArrowRoundForward />
         </button>
       </div>
 
       {/* Right Section */}
-      <div className='relative w-[45%]'>
-        <div className='relative bg-white rounded-bl-4xl rounded-tl-4xl pl-10 py-10 pr-0'>
+      <div className='relative w-full lg:w-[45%]'>
+        <div className='relative bg-white rounded-3xl lg:rounded-bl-4xl lg:rounded-tl-4xl lg-rounded-br-none lg:rounded-tr-none pl-6 sm:pl-10 py-10 pr-6 sm:pr-10 lg:pr-0'>
           {/* Cards Row */}
           <div className='overflow-hidden'>
             <div
@@ -114,7 +114,7 @@ export default function Hero() {
                   className='flex-none w-80 rounded-3xl overflow-hidden border border-lavender-mist'
                 >
                   {/* Image */}
-                  <div className='h-50 relative'>
+                  <div className='h-48 sm:h-50 relative'>
                     <img
                       src={product.image}
                       alt={product.title}

@@ -27,15 +27,19 @@ function FeatureItem({ icon, title, description }) {
   const Icon = icon;
 
   return (
-    <div className='flex items-center justify-center gap-4 w-full'>
+    <div className='flex flex-col sm:flex-row items-center sm:items-start gap-4 w-full max-w-xs'>
+      {/* Icon with background */}
       <div className='relative flex items-center justify-center'>
         <Icon size={50} stroke='#1C1C1C' />
         <span className='absolute w-10 h-10 bg-smoked-violet rounded-full -z-10 translate-x-3 translate-y-2'></span>
       </div>
 
-      <div className='flex-1'>
-        <h3 className='font-sans text-xl font-medium'>{title}</h3>
-        <p className='font-sans text-faded-iris text-sm'>{description}</p>
+      {/* Text */}
+      <div className='text-center sm:text-left'>
+        <h3 className='font-sans text-lg sm:text-xl font-medium'>{title}</h3>
+        <p className='font-sans text-faded-iris text-sm sm:text-base mt-1'>
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -43,7 +47,7 @@ function FeatureItem({ icon, title, description }) {
 
 export default function Features() {
   return (
-    <section className='px-16 py-10 flex items-center justify-center gap-20'>
+    <section className='px-4 sm:px-8 lg:px-16 py-10 flex flex-wrap justify-center gap-8 lg:gap-20'>
       {features.map((feature) => (
         <FeatureItem
           key={feature.id}

@@ -9,7 +9,7 @@ export default function Accordion({ items }) {
   };
 
   return (
-    <div className='max-w-6xl mx-auto p-8'>
+    <div className='mt-2 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
       {items.map((item, index) => {
         const isOpen = openIndex === index;
 
@@ -21,9 +21,9 @@ export default function Accordion({ items }) {
             {/* Header */}
             <button
               onClick={() => toggleItem(index)}
-              className={`w-full flex justify-between items-center py-6 px-8 border rounded-2xl transition-all duration-300 ${isOpen ? 'bg-pearl-violet text-near-black border-transparent rounded-b-none' : 'bg-white border-dusk-plum text-charcoal'}`}
+              className={`w-full flex justify-between items-center p-4 sm:p-6 border rounded-2xl transition-all duration-300 ${isOpen ? 'bg-pearl-violet text-near-black border-transparent rounded-b-none' : 'bg-white border-dusk-plum text-charcoal'}`}
             >
-              <h3 className='text-lg font-medium text-left pr-4'>
+              <h3 className='text-base sm:text-lg font-medium text-left pr-4'>
                 {item.question}
               </h3>
               <span
@@ -41,7 +41,7 @@ export default function Accordion({ items }) {
             <div
               className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-125' : 'max-h-0'}`}
             >
-              <div className='bg-dusk-plum rounded-b-2xl px-8 py-6'>
+              <div className='bg-smoked-violet rounded-b-2xl p-4 sm:p-6'>
                 <p className='text-sm text-white leading-relaxed'>
                   {item.answer}
                 </p>

@@ -42,8 +42,8 @@ export default function CollectionGrid() {
   ];
 
   return (
-    <section className='py-10'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-300 mx-auto px-6'>
+    <section className='py-10 px-4 sm:px-6 lg:px-16'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-300 mx-auto'>
         {categories.map((category, index) => (
           <div
             key={category.title}

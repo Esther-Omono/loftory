@@ -31,7 +31,7 @@ export default function Faq() {
   ];
 
   return (
-    <section className='py-10 px-16 font-sans'>
+    <section className='py-10 px-4 sm:px-6 lg:px-16 font-sans'>
       <Heading title='FAQs' subtitle='Question? Look Here' />
 
       <Accordion items={faqData} />

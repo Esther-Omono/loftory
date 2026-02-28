@@ -29,10 +29,10 @@ export default function Testimonial() {
     },
   ];
   return (
-    <section className='bg-pearl-violet py-10 px-16 font-sans'>
+    <section className='bg-pearl-violet py-10 px-4 sm:px-6 lg:px-16 font-sans'>
       <Heading title='Testimonial' subtitle='What Our Clients Say' />
 
-      <div className='grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8 p-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 p-4 sm:p-8'>
         {testimonials.map((testimony) => (
           <TestimonialCard
             key={testimony.id}
