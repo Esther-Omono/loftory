@@ -1,4 +1,5 @@
 import { CollectionGrid } from './Components/CollectionGrid';
+import Faq from './Components/Faq';
 import Features from './Components/Features';
 import Hero from './Components/Hero';
 import Navbar from './Components/Navbar';
@@ -12,6 +13,7 @@ export default function App() {
       <Features />
       <CollectionGrid />
       <Testimonial />
+      <Faq />
     </div>
   );
 }
