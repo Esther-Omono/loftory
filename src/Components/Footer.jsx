@@ -41,7 +41,7 @@ export default function Footer() {
     <footer className='bg-smoked-violet text-white py-10 px-4 sm:px-6 lg:px-16 font-sans'>
       <div className='flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-16'>
         {/* Left Section */}
-        <div className='flex-1-1/3'>
+        <div className='basis-1/3'>
           <Logo bgColor='bg-white' iconColor='#7B5EA7' textColor='text-white' />
 
           <p className='py-2 text-sm sm:text-base'>
@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
 
         {/* Right Section */}
-        <div className='flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+        <div className='basis-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
           {footerSections.map((section, index) => (
             <div key={index} className='flex-1'>
               <h3 className='mb-3 text-base font-semibold'>{section.title}</h3>
