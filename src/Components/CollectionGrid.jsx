@@ -1,7 +1,7 @@
 import { CollectionCard } from './CollectionCard';
 import chairImg from '../assets/chair.jpg';
 
-export const CollectionGrid = () => {
+export default function CollectionGrid() {
   const categories = [
     {
       count: '1500+',
@@ -59,4 +59,4 @@ export const CollectionGrid = () => {
       </div>
     </section>
   );
-};
+}

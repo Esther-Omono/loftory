@@ -32,7 +32,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className='px-16 h-16 flex items-center justify-between border-b border-b-dusty-mauve'>
+    <nav className='sticky top-0 z-50 bg-white px-16 h-16 flex items-center justify-between border-b border-b-dusty-mauve'>
       {/* Logo */}
       <Logo />
 

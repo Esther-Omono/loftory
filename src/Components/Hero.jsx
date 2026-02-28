@@ -73,7 +73,7 @@ export default function Hero() {
       <div className='w-[55%]'>
         <div className='inline-flex items-center gap-2 bg-white border border-dusty-mauve py-2 px-3 rounded-4xl font-sans'>
           <div className='bg-smoked-violet p-2 rounded-full'>
-            <LuArmchair size={17} fill='#F5F2FA' stroke='#F5F2FA' />
+            <LuArmchair size={17} stroke='#F5F2FA' />
           </div>
           <p className='text-sm'>The Best Online Furniture Store</p>
         </div>
@@ -108,9 +108,9 @@ export default function Hero() {
                 transform: `translateX(-${index * 352}px)`,
               }}
             >
-              {extendedProducts.map((product) => (
+              {extendedProducts.map((product, i) => (
                 <div
-                  key={product.id}
+                  key={`${product.id}-${i}`}
                   className='flex-none w-80 rounded-3xl overflow-hidden border border-lavender-mist'
                 >
                   {/* Image */}
