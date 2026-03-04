@@ -8,21 +8,21 @@ const products = [
     image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7',
     title: 'Modern Lounge Chair',
     items: '2,500+ Items',
-    price: '$1,200',
+    price: '₦1,200',
   },
   {
     id: 2,
     image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7',
     title: 'Minimal Sofa',
     items: '1,800+ Items',
-    price: '$980',
+    price: '₦980',
   },
   {
     id: 3,
     image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
     title: 'Wooden Coffee Table',
     items: '900+ Items',
-    price: '$450',
+    price: '₦450',
   },
 ];
 

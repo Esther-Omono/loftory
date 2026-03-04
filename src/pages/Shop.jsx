@@ -1,5 +1,10 @@
-import React from 'react';
+import PageHeader from '../components/layout/PageHeader';
 
 export default function Shop() {
-  return <div>Shop</div>;
+  return (
+    <div>
+      <PageHeader title='Shop' />
+      Shop
+    </div>
+  );
 }
