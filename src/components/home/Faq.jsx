@@ -1,5 +1,5 @@
-import Accordion from './Accordion';
-import Heading from './Heading';
+import Accordion from '../common/Accordion';
+import Heading from '../common/Heading';
 
 export default function Faq() {
   const faqData = [

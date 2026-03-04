@@ -1,5 +1,5 @@
 import TestimonialCard from './TestimonialCard';
-import Heading from './Heading';
+import Heading from '../common/Heading';
 
 export default function Testimonial() {
   const testimonials = [

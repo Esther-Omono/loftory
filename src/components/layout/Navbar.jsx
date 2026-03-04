@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import Logo from './Logo';
+import Logo from '../common/Logo';
 import { CiHeart, CiSearch, CiShoppingCart, CiUser } from 'react-icons/ci';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
+import { NavLink } from 'react-router-dom';
 
 const icons = [CiSearch, CiHeart, CiShoppingCart, CiUser];
 
@@ -21,16 +22,15 @@ function NavIcons() {
 }
 
 export default function Navbar() {
-  const [active, setActive] = useState('Home');
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    'Home',
-    'Shop',
-    'Categories',
-    'About Us',
-    'Contact Us',
-    'Blog',
+    { name: 'Home', path: '/' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Categories', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'Blog', path: '/about' },
   ];
 
   return (
@@ -43,20 +43,20 @@ export default function Navbar() {
         <div className='hidden lg:flex items-center gap-10'>
           <ul className='flex gap-8 items-center'>
             {navItems.map((item) => (
-              <li
-                key={item}
-                onClick={() => setActive(item)}
-                className={`
+              <NavLink
+                key={item.name}
+                to={item.path}
+                className={({ isActive }) => `
             font-sans text-sm font-medium cursor-pointer transition
             ${
-              active === item
+              isActive
                 ? 'text-near-black underline decoration-2 decoration-smoked-violet underline-offset-6'
                 : 'text-dusk-plum hover:text-dusty-mauve'
             }
           `}
               >
-                {item}
-              </li>
+                {item.name}
+              </NavLink>
             ))}
           </ul>
 
@@ -77,16 +77,18 @@ export default function Navbar() {
         <div className='absolute top-full left-0 w-full z-40 lg:hidden px-6 pb-6 bg-white shadow-md border-t border-dusty-mauve'>
           <ul className='flex flex-col gap-5 mt-4'>
             {navItems.map((item) => (
-              <li
-                key={item}
+              <NavLink
+                key={item.name}
+                to={item.path}
                 onClick={() => {
-                  setActive(item);
                   setMenuOpen(false);
                 }}
-                className='font-sans text-sm font-medium text-dusk-plum cursor-pointer'
+                className={({ isActive }) =>
+                  `font-sans text-sm font-medium transition cursor-pointer ${isActive ? 'text-near-black' : 'text-dusk-plum'} `
+                }
               >
-                {item}
-              </li>
+                {item.name}
+              </NavLink>
             ))}
           </ul>
 

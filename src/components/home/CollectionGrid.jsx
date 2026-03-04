@@ -1,5 +1,5 @@
 import { CollectionCard } from './CollectionCard';
-import chairImg from '../assets/chair.jpg';
+import chairImg from '../../assets/chair.jpg';
 
 export default function CollectionGrid() {
   const categories = [

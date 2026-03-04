@@ -1,4 +1,4 @@
-import Heading from './Heading';
+import Heading from '../common/Heading';
 import { MdMailOutline } from 'react-icons/md';
 
 export default function Newsletter() {
