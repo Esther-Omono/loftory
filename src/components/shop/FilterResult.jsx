@@ -1,4 +1,4 @@
-export default function FilterResult() {
+export default function FilterResult({ start, end, total }) {
   // Dummy active filters
   const activeFilters = [
     { id: 1, label: 'Price', value: '₦100 - ₦5,000,000' },
@@ -8,7 +8,11 @@ export default function FilterResult() {
 
   return (
     <div className='mb-6'>
-      <p className='mb-3 text-sm md:text-base'>Showing 1-12 of 240 results</p>
+      <p className='mb-3 text-sm md:text-base'>
+        {total > 0
+          ? `Showing ${start}-${end} of ${total} results`
+          : 'No results found'}
+      </p>
 
       <div className='flex flex-wrap items-center gap-3'>
         <p className='py-1 text-sm font-medium'>Active Filters</p>

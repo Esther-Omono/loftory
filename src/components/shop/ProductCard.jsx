@@ -1,23 +1,8 @@
 import { FaHeart } from 'react-icons/fa';
 import { FaCartShopping } from 'react-icons/fa6';
-import { getProducts } from '../../api/product';
-import { useEffect, useState } from 'react';
 
-export default function ProductCard() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadProducts() {
-      const data = await getProducts();
-      setProducts(data);
-      setLoading(false);
-    }
-
-    loadProducts();
-  }, []);
-
-  if (loading) return <p>Loading products...</p>;
+export default function ProductCard({ products = [] }) {
+  if (!Array.isArray(products)) return null;
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
