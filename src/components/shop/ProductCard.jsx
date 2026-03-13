@@ -1,30 +1,23 @@
 import { FaHeart } from 'react-icons/fa';
 import { FaCartShopping } from 'react-icons/fa6';
+import { getProducts } from '../../api/product';
+import { useEffect, useState } from 'react';
 
 export default function ProductCard() {
-  const products = [
-    {
-      id: 1,
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7',
-      title: 'Modern Lounge Chair',
-      category: 'Chair',
-      price: '₦1,200',
-    },
-    {
-      id: 2,
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7',
-      title: 'Minimal Sofa',
-      category: 'Sofa',
-      price: '₦980',
-    },
-    {
-      id: 3,
-      image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
-      title: 'Wooden Coffee Table',
-      category: 'Bedroom',
-      price: '₦450',
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadProducts() {
+      const data = await getProducts();
+      setProducts(data);
+      setLoading(false);
+    }
+
+    loadProducts();
+  }, []);
+
+  if (loading) return <p>Loading products...</p>;
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -37,7 +30,7 @@ export default function ProductCard() {
           <div className='relative overflow-hidden rounded-xl'>
             <img
               src={product.image}
-              alt={product.title}
+              alt={product.name}
               className='w-full h-48 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105'
             />
 
@@ -57,10 +50,10 @@ export default function ProductCard() {
             {product.category}
           </p>
 
-          <h3 className='text-lg font-semibold'>{product.title}</h3>
+          <h3 className='text-lg font-semibold'>{product.name}</h3>
 
           <p className='text-xl font-bold text-smoked-violet'>
-            {product.price}
+            ₦{product.price}
           </p>
         </div>
       ))}

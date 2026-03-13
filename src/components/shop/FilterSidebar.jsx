@@ -3,7 +3,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 export default function FilterSidebar({ products, setFilteredProducts }) {
-  const [priceRange, setPriceRange] = useState([100, 5000000]);
+  const [priceRange, setPriceRange] = useState([100000, 10000000]);
 
   // Dynamically filter products as the slider changes
   const handlePriceChange = (newRange) => {
@@ -33,12 +33,32 @@ export default function FilterSidebar({ products, setFilteredProducts }) {
 
         <label className='flex items-center gap-2'>
           <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
-          <span>Living Room</span>
+          <span>Chair</span>
         </label>
 
         <label className='flex items-center gap-2'>
           <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
-          <span>Office</span>
+          <span>Couch</span>
+        </label>
+
+        <label className='flex items-center gap-2'>
+          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <span>Dining</span>
+        </label>
+
+        <label className='flex items-center gap-2'>
+          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <span>Kitchen</span>
+        </label>
+
+        <label className='flex items-center gap-2'>
+          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <span>Stool</span>
+        </label>
+
+        <label className='flex items-center gap-2'>
+          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <span>Table</span>
         </label>
       </div>
 
@@ -56,8 +76,8 @@ export default function FilterSidebar({ products, setFilteredProducts }) {
         {/* Dual-thumb slider */}
         <Slider
           range
-          min={100}
-          max={5000000}
+          min={100000}
+          max={10000000}
           step={5000}
           value={priceRange}
           onChange={handlePriceChange} // dynamically filter
@@ -83,8 +103,8 @@ export default function FilterSidebar({ products, setFilteredProducts }) {
         />
 
         <div className='flex justify-between text-xs text-faded-iris mt-2'>
-          <span>₦100</span>
-          <span>₦5,000,000</span>
+          <span>₦100,000</span>
+          <span>₦10,000,000</span>
         </div>
       </div>
 
