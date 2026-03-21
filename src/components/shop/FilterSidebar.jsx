@@ -1,19 +1,34 @@
-import { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-export default function FilterSidebar({ products, setFilteredProducts }) {
-  const [priceRange, setPriceRange] = useState([100000, 10000000]);
+export default function FilterSidebar({ filters, setFilters }) {
+  const priceRange = filters?.price || [100000, 10000000];
 
-  // Dynamically filter products as the slider changes
   const handlePriceChange = (newRange) => {
-    setPriceRange(newRange);
-    if (setFilteredProducts) {
-      const filtered = products.filter(
-        (p) => p.price >= newRange[0] && p.price <= newRange[1],
-      );
-      setFilteredProducts(filtered);
-    }
+    setFilters((prev) => ({
+      ...prev,
+      price: newRange,
+    }));
+  };
+
+  const handleCategoryChange = (category) => {
+    setFilters((prev) => {
+      const exists = prev.category.includes(category);
+
+      return {
+        ...prev,
+        category: exists
+          ? prev.category.filter((c) => c !== category)
+          : [...prev.category, category],
+      };
+    });
+  };
+
+  const handleAvailabilityChange = (value) => {
+    setFilters((prev) => ({
+      ...prev,
+      inStock: value,
+    }));
   };
 
   return (
@@ -27,37 +42,72 @@ export default function FilterSidebar({ products, setFilteredProducts }) {
         <h3 className='font-medium'>Category</h3>
 
         <label className='flex items-center gap-2'>
-          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='checkbox'
+            className='accent-smoked-violet w-4 h-4'
+            onChange={() => handleCategoryChange('Bedroom')}
+            checked={filters?.category.includes('Bedroom')}
+          />
           <span>Bedroom</span>
         </label>
 
         <label className='flex items-center gap-2'>
-          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='checkbox'
+            className='accent-smoked-violet w-4 h-4'
+            onChange={() => handleCategoryChange('Chair')}
+            checked={filters?.category.includes('Chair')}
+          />
           <span>Chair</span>
         </label>
 
         <label className='flex items-center gap-2'>
-          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='checkbox'
+            className='accent-smoked-violet w-4 h-4'
+            onChange={() => handleCategoryChange('Couch')}
+            checked={filters?.category.includes('Couch')}
+          />
           <span>Couch</span>
         </label>
 
         <label className='flex items-center gap-2'>
-          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='checkbox'
+            className='accent-smoked-violet w-4 h-4'
+            onChange={() => handleCategoryChange('Dining')}
+            checked={filters?.category.includes('Dining')}
+          />
           <span>Dining</span>
         </label>
 
         <label className='flex items-center gap-2'>
-          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='checkbox'
+            className='accent-smoked-violet w-4 h-4'
+            onChange={() => handleCategoryChange('Kitchen')}
+            checked={filters?.category.includes('Kitchen')}
+          />
           <span>Kitchen</span>
         </label>
 
         <label className='flex items-center gap-2'>
-          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='checkbox'
+            className='accent-smoked-violet w-4 h-4'
+            onChange={() => handleCategoryChange('Stool')}
+            checked={filters?.category.includes('Stool')}
+          />
           <span>Stool</span>
         </label>
 
         <label className='flex items-center gap-2'>
-          <input type='checkbox' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='checkbox'
+            className='accent-smoked-violet w-4 h-4'
+            onChange={() => handleCategoryChange('Table')}
+            checked={filters?.category.includes('Table')}
+          />
           <span>Table</span>
         </label>
       </div>
@@ -115,11 +165,23 @@ export default function FilterSidebar({ products, setFilteredProducts }) {
         <h3 className='font-medium'>Availability</h3>
 
         <label className='flex items-center gap-2'>
-          <input type='radio' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='radio'
+            name='inStock'
+            checked={filters?.inStock === true}
+            onChange={() => handleAvailabilityChange(true)}
+            className='accent-smoked-violet w-4 h-4'
+          />
           <span>In Stock</span>
         </label>
         <label className='flex items-center gap-2'>
-          <input type='radio' className='accent-smoked-violet w-4 h-4' />
+          <input
+            type='radio'
+            name='inStock'
+            checked={filters?.inStock === false}
+            onChange={() => handleAvailabilityChange(false)}
+            className='accent-smoked-violet w-4 h-4'
+          />
           <span>Out of Stock</span>
         </label>
       </div>

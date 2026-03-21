@@ -5,7 +5,7 @@ export default function ProductCard({ products = [] }) {
   if (!Array.isArray(products)) return null;
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 will-change-transform'>
       {products.map((product) => (
         <div
           key={product.id}
@@ -16,7 +16,9 @@ export default function ProductCard({ products = [] }) {
             <img
               src={product.image}
               alt={product.name}
+              loading='lazy'
               className='w-full h-48 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105'
+              style={{ aspectRatio: '4/3' }}
             />
 
             {/* Hover Buttons */}
@@ -37,9 +39,7 @@ export default function ProductCard({ products = [] }) {
 
           <h3 className='text-lg font-semibold'>{product.name}</h3>
 
-          <p className='text-xl font-bold text-smoked-violet'>
-            ₦{product.price}
-          </p>
+          <p className='text-lg text-smoked-violet'>₦{product.price}</p>
         </div>
       ))}
     </div>

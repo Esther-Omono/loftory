@@ -7,6 +7,11 @@ import { IoFilter } from 'react-icons/io5';
 
 export default function Shop() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    price: [100000, 10000000],
+    category: [],
+    inStock: null,
+  });
 
   return (
     <div>
@@ -23,11 +28,11 @@ export default function Shop() {
 
         {/* Desktop Sidebar */}
         <div className='hidden md:block'>
-          <FilterSidebar />
+          <FilterSidebar filters={filters} setFilters={setFilters} />
         </div>
 
         {/* Products */}
-        <ProductGrid />
+        <ProductGrid filters={filters} />
       </div>
 
       {/* Mobile Drawer */}

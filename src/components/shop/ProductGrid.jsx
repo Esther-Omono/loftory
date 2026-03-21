@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../../api/product';
 import FilterResult from './FilterResult';
 import ProductCard from './ProductCard';
+import SkeletonGrid from '../common/SkeletonGrid';
 
 const PER_PAGE = 12;
 
-export default function ProductGrid() {
+export default function ProductGrid({ filters }) {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // first load only
+  const [isFetching, setIsFetching] = useState(false); // pagination/filtering
   const [currentPage, setCurrentPage] = useState(1);
   const [total, setTotal] = useState(0);
 
@@ -17,25 +19,37 @@ export default function ProductGrid() {
 
   useEffect(() => {
     async function loadProducts() {
-      setLoading(true);
+      setIsFetching(true);
 
-      const { data, total } = await getProducts(currentPage, PER_PAGE);
+      const { data, total } = await getProducts(currentPage, PER_PAGE, filters);
 
       setProducts(data);
       setTotal(total);
+
       setLoading(false);
+      setIsFetching(false);
     }
 
     loadProducts();
-  }, [currentPage]);
-
-  if (loading) return <p>Loading products...</p>;
+  }, [currentPage, filters]);
 
   return (
-    <div className='py-4 -mt-4 lg:mt-0'>
+    <div className='py-4 -mt-4 lg:mt-0 min-h-150'>
       <FilterResult start={start} end={end} total={total} />
 
-      <ProductCard products={products} />
+      {loading ? (
+        <SkeletonGrid />
+      ) : (
+        <div className='relative'>
+          <ProductCard products={products} />
+          {/* Overlay loader instead of removing content */}
+          {isFetching && (
+            <div className='absolute inset-0 bg-white/60 flex items-center justify-center'>
+              <p className='text-sm'>Loading...</p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
