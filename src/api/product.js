@@ -36,6 +36,11 @@ export const getProducts = async (page = 1, perPage = 12, filters = {}) => {
       throw new Error('Failed to fetch products');
     }
 
+    /* Added this from chat */
+    if (!response.headers.get('content-type')?.includes('application/json')) {
+      throw new Error('Invalid response format: expected JSON');
+    }
+
     const result = await response.json();
 
     const productsArray = Array.isArray(result.data) ? result.data : [];
