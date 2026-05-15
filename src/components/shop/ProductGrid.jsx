@@ -20,6 +20,10 @@ export default function ProductGrid({ filters }) {
   useEffect(() => {
     async function loadProducts() {
       setIsFetching(true);
+      setLoading(true);
+      {
+        /* setLoading to true */
+      }
 
       const { data, total } = await getProducts(currentPage, PER_PAGE, filters);
 
@@ -34,9 +38,10 @@ export default function ProductGrid({ filters }) {
   }, [currentPage, filters]);
 
   return (
-    <div className='py-4 -mt-4 lg:mt-0 min-h-150'>
+    <div className='py-4 -mt-4 lg:mt-0 min-h-screen'>
+      {' '}
+      {/* Remove minimum height and try other variations to find out why the screen is halfing on scroll */}
       <FilterResult start={start} end={end} total={total} />
-
       {loading ? (
         <SkeletonGrid />
       ) : (
@@ -50,7 +55,6 @@ export default function ProductGrid({ filters }) {
           )}
         </div>
       )}
-
       {/* Pagination Controls */}
       {totalPages > 1 && (
         <div className='flex items-center justify-center gap-2 mt-8'>
