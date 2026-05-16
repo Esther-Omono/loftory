@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export const getProducts = async (page = 1, perPage = 12, filters = {}) => {
   try {
     let query = `?_page=${page}&_per_page=${perPage}`;
-    let conditions = [];
+    let where = {};
 
     // Price Filter
     if (filters.price) {
@@ -14,20 +14,18 @@ export const getProducts = async (page = 1, perPage = 12, filters = {}) => {
 
     // Category Filter
     if (filters.category && filters.category.length > 0) {
-      const orConditions = filters.category.map((cat) => ({
+      where.or = filters.category.map((cat) => ({
         category: { eq: cat },
       }));
-
-      query += `&_where=${encodeURIComponent(
-        JSON.stringify({ or: orConditions }),
-      )}`;
     }
 
     // Availability Filter
     if (filters.inStock !== null) {
-      conditions.push({
-        inStock: { eq: filters.inStock },
-      });
+      where.inStock = { eq: filters.inStock };
+    }
+
+    if (Object.keys(where).length > 0) {
+      query += `&_where=${encodeURIComponent(JSON.stringify(where))}`;
     }
 
     const response = await fetch(`${BASE_URL}/products${query}`);

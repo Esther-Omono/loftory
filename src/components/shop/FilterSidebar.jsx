@@ -184,6 +184,12 @@ export default function FilterSidebar({ filters, setFilters }) {
           />
           <span>Out of Stock</span>
         </label>
+        <button
+          onClick={() => handleAvailabilityChange(null)}
+          className='text-sm text-smoked-violet hover:underline'
+        >
+          Clear Availability
+        </button>
       </div>
     </aside>
   );
