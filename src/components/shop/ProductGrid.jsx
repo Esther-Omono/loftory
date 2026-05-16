@@ -3,6 +3,7 @@ import { getProducts } from '../../api/product';
 import FilterResult from './FilterResult';
 import ProductCard from './ProductCard';
 import SkeletonGrid from '../common/SkeletonGrid';
+import EmptyState from '../common/EmptyState';
 
 const PER_PAGE = 12;
 
@@ -39,6 +40,8 @@ export default function ProductGrid({ filters }) {
 
       {loading ? (
         <SkeletonGrid />
+      ) : total === 0 ? (
+        <EmptyState />
       ) : (
         <div className='relative'>
           <ProductCard products={products} />
