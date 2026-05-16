@@ -32,7 +32,7 @@ export default function Shop() {
         </div>
 
         {/* Products */}
-        <ProductGrid filters={filters} />
+        <ProductGrid filters={filters} setFilters={setFilters} />
       </div>
 
       {/* Mobile Drawer */}

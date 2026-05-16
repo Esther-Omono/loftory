@@ -1,7 +1,7 @@
 // EmptyState.jsx
 export default function EmptyState({ onClear }) {
   return (
-    <div className='mt-20 flex flex-col items-center justify-center py-20 px-4 text-center'>
+    <div className='mt-4 flex flex-col items-center justify-center py-20 px-4 text-center'>
       {/* Illustration */}
       <div className='relative mb-6'>
         {/* Sofa shape */}

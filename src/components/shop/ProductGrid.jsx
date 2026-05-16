@@ -7,7 +7,7 @@ import EmptyState from '../common/EmptyState';
 
 const PER_PAGE = 12;
 
-export default function ProductGrid({ filters }) {
+export default function ProductGrid({ filters, setFilters }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // first load only
   const [isFetching, setIsFetching] = useState(false); // pagination/filtering
@@ -36,7 +36,13 @@ export default function ProductGrid({ filters }) {
 
   return (
     <div className='py-4 -mt-4 lg:mt-0 min-h-150'>
-      <FilterResult start={start} end={end} total={total} />
+      <FilterResult
+        start={start}
+        end={end}
+        total={total}
+        filters={filters}
+        setFilters={setFilters}
+      />
 
       {loading ? (
         <SkeletonGrid />
