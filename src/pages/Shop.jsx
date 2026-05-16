@@ -39,6 +39,8 @@ export default function Shop() {
       <FilterDrawer
         isOpen={isFilterOpen}
         onClose={() => setIsFilterOpen(false)}
+        filters={filters}
+        setFilters={setFilters}
       />
     </div>
   );

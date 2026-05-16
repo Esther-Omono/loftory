@@ -1,7 +1,7 @@
 import FilterSidebar from './FilterSidebar';
 import { HiOutlineX } from 'react-icons/hi';
 
-export default function FilterDrawer({ isOpen, onClose }) {
+export default function FilterDrawer({ isOpen, onClose, filters, setFilters }) {
   return (
     <>
       {/* Overlay */}
@@ -23,7 +23,7 @@ export default function FilterDrawer({ isOpen, onClose }) {
         <div className='p-4 h-full'>
           <HiOutlineX onClick={onClose} className='mb-2' size={20} />
 
-          <FilterSidebar />
+          <FilterSidebar filters={filters} setFilters={setFilters} />
         </div>
       </div>
     </>

@@ -46,7 +46,7 @@ export default function FilterSidebar({ filters, setFilters }) {
             type='checkbox'
             className='accent-smoked-violet w-4 h-4'
             onChange={() => handleCategoryChange('Bedroom')}
-            checked={filters?.category.includes('Bedroom')}
+            checked={filters?.category?.includes('Bedroom')}
           />
           <span>Bedroom</span>
         </label>
@@ -56,7 +56,7 @@ export default function FilterSidebar({ filters, setFilters }) {
             type='checkbox'
             className='accent-smoked-violet w-4 h-4'
             onChange={() => handleCategoryChange('Chair')}
-            checked={filters?.category.includes('Chair')}
+            checked={filters?.category?.includes('Chair')}
           />
           <span>Chair</span>
         </label>
@@ -66,7 +66,7 @@ export default function FilterSidebar({ filters, setFilters }) {
             type='checkbox'
             className='accent-smoked-violet w-4 h-4'
             onChange={() => handleCategoryChange('Couch')}
-            checked={filters?.category.includes('Couch')}
+            checked={filters?.category?.includes('Couch')}
           />
           <span>Couch</span>
         </label>
@@ -76,7 +76,7 @@ export default function FilterSidebar({ filters, setFilters }) {
             type='checkbox'
             className='accent-smoked-violet w-4 h-4'
             onChange={() => handleCategoryChange('Dining')}
-            checked={filters?.category.includes('Dining')}
+            checked={filters?.category?.includes('Dining')}
           />
           <span>Dining</span>
         </label>
@@ -86,7 +86,7 @@ export default function FilterSidebar({ filters, setFilters }) {
             type='checkbox'
             className='accent-smoked-violet w-4 h-4'
             onChange={() => handleCategoryChange('Kitchen')}
-            checked={filters?.category.includes('Kitchen')}
+            checked={filters?.category?.includes('Kitchen')}
           />
           <span>Kitchen</span>
         </label>
@@ -96,7 +96,7 @@ export default function FilterSidebar({ filters, setFilters }) {
             type='checkbox'
             className='accent-smoked-violet w-4 h-4'
             onChange={() => handleCategoryChange('Stool')}
-            checked={filters?.category.includes('Stool')}
+            checked={filters?.category?.includes('Stool')}
           />
           <span>Stool</span>
         </label>
@@ -106,7 +106,7 @@ export default function FilterSidebar({ filters, setFilters }) {
             type='checkbox'
             className='accent-smoked-violet w-4 h-4'
             onChange={() => handleCategoryChange('Table')}
-            checked={filters?.category.includes('Table')}
+            checked={filters?.category?.includes('Table')}
           />
           <span>Table</span>
         </label>
@@ -164,24 +164,55 @@ export default function FilterSidebar({ filters, setFilters }) {
       <div className='space-y-3 mb-6'>
         <h3 className='font-medium'>Availability</h3>
 
-        <label className='flex items-center gap-2'>
+        <label className='flex items-center gap-2 cursor-pointer'>
           <input
             type='radio'
             name='inStock'
             checked={filters?.inStock === true}
             onChange={() => handleAvailabilityChange(true)}
-            className='accent-smoked-violet w-4 h-4'
+            className='sr-only'
           />
+
+          <span
+            className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
+              filters?.inStock === true
+                ? 'border-smoked-violet'
+                : 'border-faded-iris'
+            }`}
+          >
+            <span
+              className={`w-2 h-2 rounded-full bg-smoked-violet transition-opacity ${
+                filters?.inStock === true ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          </span>
+
           <span>In Stock</span>
         </label>
-        <label className='flex items-center gap-2'>
+
+        <label className='flex items-center gap-2 cursor-pointer'>
           <input
             type='radio'
             name='inStock'
             checked={filters?.inStock === false}
             onChange={() => handleAvailabilityChange(false)}
-            className='accent-smoked-violet w-4 h-4'
+            className='sr-only'
           />
+
+          <span
+            className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
+              filters?.inStock === false
+                ? 'border-smoked-violet'
+                : 'border-faded-iris'
+            }`}
+          >
+            <span
+              className={`w-2 h-2 rounded-full bg-smoked-violet transition-opacity ${
+                filters?.inStock === false ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          </span>
+
           <span>Out of Stock</span>
         </label>
         <button
