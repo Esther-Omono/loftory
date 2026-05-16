@@ -1,5 +1,6 @@
 import { FaHeart } from 'react-icons/fa';
 import { FaCartShopping } from 'react-icons/fa6';
+import { optimizeImage } from '../../utils/optimizeImage';
 
 export default function ProductCard({ products = [] }) {
   if (!Array.isArray(products)) return null;
@@ -14,7 +15,7 @@ export default function ProductCard({ products = [] }) {
           {/* Image container */}
           <div className='relative overflow-hidden rounded-xl'>
             <img
-              src={product.image}
+              src={optimizeImage(product.image, 400)}
               alt={product.name}
               loading='lazy'
               className='w-full h-48 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105'
