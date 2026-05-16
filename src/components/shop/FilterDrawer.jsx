@@ -7,7 +7,7 @@ export default function FilterDrawer({ isOpen, onClose, filters, setFilters }) {
       {/* Overlay */}
       {isOpen && (
         <div
-          className='absolute inset-0 bg-black/40 z-40 md:hidden'
+          className='fixed inset-0 bg-black/40 z-40 md:hidden'
           onClick={onClose}
         />
       )}
@@ -15,14 +15,12 @@ export default function FilterDrawer({ isOpen, onClose, filters, setFilters }) {
       {/* Drawer */}
       <div
         className={`
-          absolute top-0 left-0 h-full overflow-y-auto w-[80%] bg-pearl-violet z-50
+          fixed top-15 left-0 h-full overflow-y-auto w-[80%] bg-pearl-violet z-50
           transition-transform duration-300 md:hidden
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
         <div className='p-4 h-full'>
-          <HiOutlineX onClick={onClose} className='mb-2' size={20} />
-
           <FilterSidebar filters={filters} setFilters={setFilters} />
         </div>
       </div>

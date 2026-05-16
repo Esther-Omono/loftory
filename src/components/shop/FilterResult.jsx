@@ -4,8 +4,9 @@ export default function FilterResult({
   total,
   filters,
   setFilters,
+  mobileBarOnly = false,
 }) {
-  // Dummy active filters
+  // Active filters
   const activeFilters = [];
 
   if (filters?.category?.length > 0) {
@@ -33,6 +34,7 @@ export default function FilterResult({
   }
 
   const defaultPrice = [100000, 10000000];
+
   if (
     filters?.price &&
     (filters.price[0] !== defaultPrice[0] ||
@@ -49,6 +51,38 @@ export default function FilterResult({
   const clearAll = () =>
     setFilters({ price: defaultPrice, category: [], inStock: null });
 
+  // Mobile sticky bar: pills only, no count text
+  if (mobileBarOnly) {
+    return (
+      <>
+        {activeFilters.map((filter) => (
+          <div
+            key={filter.id}
+            className='flex items-center gap-2 bg-smoked-violet text-pearl-violet px-3 py-1 rounded-2xl text-sm'
+          >
+            {filter.label}: {filter.value}
+            <button
+              onClick={filter.onRemove}
+              className='cursor-pointer font-semibold hover:opacity-70'
+            >
+              ✕
+            </button>
+          </div>
+        ))}
+
+        {activeFilters.length > 0 && (
+          <button
+            onClick={clearAll}
+            className='text-smoked-violet underline cursor-pointer text-sm shrink-0'
+          >
+            Clear All
+          </button>
+        )}
+      </>
+    );
+  }
+
+  // Default: full display with count text (desktop / inside ProductGrid)
   return (
     <div className='mb-6'>
       <p className='mb-3 text-sm md:text-base'>
@@ -58,7 +92,7 @@ export default function FilterResult({
       </p>
 
       {activeFilters.length > 0 && (
-        <div className='flex flex-wrap items-center gap-3'>
+        <div className='hidden md:flex flex-wrap items-center gap-3'>
           <p className='py-1 text-sm font-medium'>Active Filters</p>
 
           {activeFilters.map((filter) => (
